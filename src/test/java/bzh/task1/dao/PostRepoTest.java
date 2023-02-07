@@ -6,4 +6,7 @@ public class PostRepoTest {
     @Test
     void post() {
     }
+    @Test
+    void file() {
+    }
 }
