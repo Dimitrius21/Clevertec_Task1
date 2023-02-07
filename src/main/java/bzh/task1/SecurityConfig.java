@@ -11,6 +11,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.build();
+        SecurityFilterChain filterChain = http.authorizeHttpRequests()
+                .requestMatchers("/post").authenticated()
+                .and().formLogin().permitAll() //loginPage("/login").permitAll()
+                .and().logout().logoutSuccessUrl("/start")
+                .and().build();
+        return filterChain;
     }
 }
